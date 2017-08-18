@@ -10,6 +10,8 @@ function searchWeather(){
   if(cityName.length == 0){
     alert('input a cityName');
   }
+  Elements.LoadingText.style.display = 'block';
+  Elements.WeatherBox.style.display = 'none';
   const URL = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&units=metric&appid='+ appId;
   Http.fetchData(URL)
     .then(ResponseData => {
@@ -26,6 +28,6 @@ function updateWeather(weatherData){
   Elements.WeatherCity.textContent = weatherData.cityName;
   Elements.WeatherDescripton.textContent = weatherData.description;
   Elements.WeatherTemperaure.textContent = weatherData.temperature;
-
   Elements.WeatherBox.style.display = 'block';
+  Elements.LoadingText.style.display = 'none';
 }
